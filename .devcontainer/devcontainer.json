@@ -1,0 +1,12 @@
+{
+  "name": "Python Learn 2026",
+  "image": "://mcr.microsoft.com",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+      ]
+    }
+  }
+}
