@@ -1,6 +1,6 @@
 {
   "name": "Python Learn 2026",
-  "image": "://mcr.microsoft.com",
+  "image": "mcr.microsoft.com",
   "customizations": {
     "vscode": {
       "extensions": [
