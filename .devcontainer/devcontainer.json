@@ -1,6 +1,6 @@
 {
   "name": "Python Learn 2026",
-  "image": "mcr.microsoft.com",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.13",
   "customizations": {
     "vscode": {
       "extensions": [
