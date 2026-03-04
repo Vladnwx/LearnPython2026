@@ -9,7 +9,7 @@ flask-wtf
 
 # Улучшенная отладка и интерактивная оболочка
 python-dotenv
-flask-shell-plus
+flask-shell-pro
 
 # HTTP-запросы
 requests
