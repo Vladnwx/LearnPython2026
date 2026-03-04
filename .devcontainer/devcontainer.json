@@ -9,6 +9,6 @@
       ]
     }
   },
-  "postCreateCommand": "python3 -m ensurepip --upgrade && python3 -m pip install --upgrade pip && python3 -m pip install -r requirements.txt",
+  "postCreateCommand": "echo '--- STARTING POST-CREATE CONFIGURATION ---' && python3 -m ensurepip --upgrade && echo '--- UPGRADING PIP ---' && python3 -m pip install --upgrade pip && echo '--- INSTALLING FROM REQUIREMENTS.TXT ---' && python3 -m pip install -r requirements.txt && echo '--- ALL DONE! READY TO CODE ---'",
   "forwardPorts": [5000]
 }
