@@ -1,28 +1,43 @@
 #!/bin/bash
 
-echo "--- Создание структуры обучающих модулей ---"
+echo "--- Инициализация сложной структуры проекта ---"
 
-# Массив с количеством задач для каждого из 6 модулей
-tasks_per_module=(7 7 5 5 5 1)
+# 1. Создание уникальных подпапок для каждого модуля
+echo "Создание специфических директорий..."
+
+# Модуль 1
+mkdir -p module_01/{homework,materials/first_application}
+
+# Модуль 2
+mkdir -p module_02/{homework/hw{1..7},materials/test}
+
+# Модуль 3
+mkdir -p module_03/{homework/hw{1..5},materials/{previous_hw_test/tests,testing_age/tests}}
+
+# Модуль 4
+mkdir -p module_04/{homework/{hw1_3,hw4,hw5},materials}
+
+# Модуль 5
+mkdir -p module_05/{homework/hw{1..5},materials/{context_managers,linux_process,working_with_processes_from_python}}
+
+# Модуль 6 (Web-structure)
+mkdir -p module_06/{homework/new_year_application/{static/{css/overlays,images/overlays,js},templates},materials}
+
+# 2. Создание файлов задач (task_n.py)
+echo "Проверка файлов задач..."
+
+declare -A task_counts=( [1]=7 [2]=7 [3]=5 [4]=5 [5]=5 [6]=1 )
 
 for i in {1..6}; do
-    # Форматируем имя папки (module_01, module_02...)
-    dir_name="module_$(printf "%02d" $i)"
+    module_dir="module_$(printf "%02d" $i)"
+    count=${task_counts[$i]}
     
-    # Создаем основную папку и подпапки
-    mkdir -p "$dir_name/homework" "$dir_name/materials"
-    
-    # Количество задач для текущего модуля (берем из массива)
-    num_tasks=${tasks_per_module[$((i-1))]}
-    
-    for j in $(seq 1 $num_tasks); do
-        file_path="$dir_name/task_$j.py"
-        # Создаем файл, только если он не существует
-        if [ ! -f "$file_path" ]; then
-            touch "$file_path"
-            echo "print('Задание $j') # Заготовка" > "$file_path"
+    for j in $(seq 1 $count); do
+        file="$module_dir/task_$j.py"
+        if [ ! -f "$file" ]; then
+            echo "# Task $j" > "$file"
         fi
     done
 done
 
-echo "--- Структура готова ---"
+echo "--- Синхронизация завершена успешно ---"
