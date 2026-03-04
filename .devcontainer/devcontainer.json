@@ -9,6 +9,11 @@
       ]
     }
   },
-  "postCreateCommand": "echo '--- STARTING POST-CREATE CONFIGURATION ---' && python3 -m ensurepip --upgrade && echo '--- UPGRADING PIP ---' && python3 -m pip install --upgrade pip && echo '--- INSTALLING FROM REQUIREMENTS.TXT ---' && python3 -m pip install -r requirements.txt && echo '--- ALL DONE! READY TO CODE ---'",
+  // Проверяем наличие файла (-f) перед запуском, чтобы не прерывать сборку
+  "updateContentCommand": "if [ -f .devcontainer/setup-folders.sh ]; then bash .devcontainer/setup-folders.sh; else echo 'Warning: setup script not found'; fi",
+
+  // Установка зависимостей с проверкой наличия файла
+  "postCreateCommand": "python3 -m pip install --upgrade pip && if [ -f requirements.txt ]; then pip install -r requirements.txt; fi",
+
   "forwardPorts": [5000]
 }
