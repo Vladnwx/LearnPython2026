@@ -47,5 +47,21 @@ def check_exists(file_path):
     return f"File <i>{file_path}</i> {result}", status_code
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+@app.route('/')
+def index():
+    # Список всех эндпоинтов
+    links = []
+    for rule in app.url_map.iter_rules():
+        if "static" not in rule.endpoint:
+            url = rule.rule
+            links.append(f'<li><a href="{url}">{url}</a></li>')
+    
+    return f"""
+    <h1>Навигация по модулю 02</h1>
+    <ul>
+        {"".join(links)}
+    </ul>
+    """
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
