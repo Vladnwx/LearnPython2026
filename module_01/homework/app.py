@@ -17,7 +17,7 @@ CARS_LIST = CARS_STRING.split(", ")
 
 @app.route('/cars')
 def cars():
-    return CARS_LIST
+    return ", ".join(CARS_LIST)
 
 CATS_STRING = "корниш-рекс, русская голубая, шотландская вислоухая, мейн-кун, манчкин"
 CATS_LIST = CATS_STRING.split(", ")
