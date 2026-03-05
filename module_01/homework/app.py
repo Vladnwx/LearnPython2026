@@ -77,7 +77,10 @@ def get_random_word():
 
 @app.route('/counter')
 def counter():
-    pass
+    counter.visits += 1
+    return f'Эта страница открывалась <b>{counter.visits}</b> раз(а)'
+
+counter.visits = 0
 
 
 @app.route('/')
