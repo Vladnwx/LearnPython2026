@@ -39,5 +39,21 @@ def counter():
     pass
 
 
+@app.route('/')
+def index():
+    # Список всех эндпоинтов
+    links = []
+    for rule in app.url_map.iter_rules():
+        if "static" not in rule.endpoint:
+            url = rule.rule
+            links.append(f'<li><a href="{url}">{url}</a></li>')
+    
+    return f"""
+    <h1>Навигация по модулю 01</h1>
+    <ul>
+        {"".join(links)}
+    </ul>
+    """
+
 if __name__ == '__main__':
     app.run(debug=True)
