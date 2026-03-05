@@ -37,7 +37,7 @@ def get_summary_rss(ps_output_file_path: str) -> str:
     value = total_rss_kib * 1024
     
     # Список единиц измерения (бинарные префиксы)
-    for unit in ['Б', 'KiB', 'MiB', 'GiB', 'TiB']:
+    for unit in ['B', 'KiB', 'MiB', 'GiB', 'TiB']:
         if value < 1024.0:
             return f"{value:.2f} {unit}"
         value /= 1024.0
