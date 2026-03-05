@@ -9,9 +9,12 @@ def hello_world():
     return f'Привет, мир!'
 
 
+CARS_STRING = "Chevrolet, Renault, Ford, Lada"
+CARS_LIST = CARS_STRING.split(", ")
+
 @app.route('/cars')
 def cars():
-    pass
+    return CARS_LIST
 
 
 @app.route('/cats')
