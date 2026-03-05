@@ -1,4 +1,5 @@
 import datetime
+import random
 from flask import Flask
 
 app = Flask(__name__)
@@ -16,10 +17,12 @@ CARS_LIST = CARS_STRING.split(", ")
 def cars():
     return CARS_LIST
 
+CATS_STRING = "корниш-рекс, русская голубая, шотландская вислоухая, мейн-кун, манчкин"
+CATS_LIST = CATS_STRING.split(", ")
 
 @app.route('/cats')
 def cats():
-    pass
+    return random.choice(CATS_LIST)
 
 
 @app.route('/get_time/now')
