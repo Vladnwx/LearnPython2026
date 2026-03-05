@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 import random
 from flask import Flask
 
@@ -27,7 +27,12 @@ def cats():
 
 @app.route('/get_time/now')
 def get_time_now():
-    pass
+    #Используется время сервера, на котором запущен процесс вероятно UTC+0
+    now = datetime.now()
+    # Форматируем его в строку (часы:минуты:секунды)
+    current_time = now.strftime("%H:%M:%S")
+    # Используем переменную при форматировании итоговой строки
+    return f"Точное время: {current_time}"
 
 
 @app.route('/get_time/future')
