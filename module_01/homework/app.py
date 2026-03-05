@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 import random
 from flask import Flask
 
@@ -37,7 +37,13 @@ def get_time_now():
 
 @app.route('/get_time/future')
 def get_time_future():
-    pass
+    now = datetime.now()
+    # Вычисляем время через час
+    future_time = now + timedelta(hours=1)
+    # Форматируем результат в строку
+    current_time_after_hour = future_time.strftime("%H:%M:%S")
+    # Формируем итоговый ответ
+    return f"Точное время через час будет {current_time_after_hour}"
 
 
 @app.route('/get_random_word')
