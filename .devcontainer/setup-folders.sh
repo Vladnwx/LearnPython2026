@@ -28,6 +28,7 @@ echo "Проверка файлов задач..."
 
 declare -A task_counts=( [1]=7 [2]=7 [3]=5 [4]=5 [5]=5 [6]=1 )
 
+'''
 for i in {1..6}; do
     module_dir="module_$(printf "%02d" $i)"
     count=${task_counts[$i]}
@@ -39,5 +40,6 @@ for i in {1..6}; do
         fi
     done
 done
+'''
 
 echo "--- Синхронизация завершена успешно ---"
