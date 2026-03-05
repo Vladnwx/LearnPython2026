@@ -5,37 +5,37 @@ app = Flask(__name__)
 
 
 @app.route('/hello_world')
-def test_function():
-    pass
+def hello_world():
+    return f'Привет, мир!'
 
 
 @app.route('/cars')
-def test_function():
+def cars():
     pass
 
 
 @app.route('/cats')
-def test_function():
+def cats():
     pass
 
 
 @app.route('/get_time/now')
-def test_function():
+def get_time_now():
     pass
 
 
 @app.route('/get_time/future')
-def test_function():
+def get_time_future():
     pass
 
 
 @app.route('/get_random_word')
-def test_function():
+def get_random_word():
     pass
 
 
 @app.route('/counter')
-def test_function():
+def counter():
     pass
 
 
