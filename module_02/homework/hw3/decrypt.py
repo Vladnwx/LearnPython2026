@@ -38,10 +38,37 @@ import sys
 
 
 def decrypt(encryption: str) -> str:
-    ...
+    result = []
+    i = 0
+    n = len(encryption)
 
+    while i < n:
+        symbol = encryption[i]
+
+        if symbol == '.':
+            # Проверяем, не является ли это началом двойной точки '..'
+            if i + 1 < n and encryption[i + 1] == '.':
+                # Это две точки: удаляем последний символ, если он есть
+                if result:
+                    result.pop()
+                i += 2  # Пропускаем обе точки
+                continue
+            else:
+                # Это одиночная точка: просто пропускаем её
+                i += 1
+                continue
+        else:
+            # Любой другой символ (буква, цифра, тире, пробел) добавляем в стек
+            result.append(symbol)
+            i += 1
+
+    return "".join(result)
 
 if __name__ == '__main__':
-    data: str = sys.stdin.read()
-    decryption: str = decrypt(data)
-    print(decryption)
+    data: str = sys.stdin.read().strip()
+    if data:
+        decryption: str = decrypt(data)
+        print(decryption)
+    else:
+        # Если на вход ничего не пришло, выводим пустую строку
+        print("")
