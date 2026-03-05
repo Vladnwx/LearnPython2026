@@ -1,0 +1,4 @@
+total 8
+-rw-rw-rw- 1 vscode vscode 1985 Mar  5 12:52 get_mean_size.py
+-rw-rw-rw- 1 vscode vscode    0 Mar  5 12:55 ls.txt
+-rw-rw-rw- 1 vscode vscode 2713 Mar  4 12:54 README.md
