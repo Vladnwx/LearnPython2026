@@ -29,15 +29,50 @@ hello wo
 hello world!
 """
 
+import os
 from flask import Flask
 
 app = Flask(__name__)
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 @app.route("/head_file/<int:size>/<path:relative_path>")
 def head_file(size: int, relative_path: str):
-    ...
+    abs_path = os.path.abspath(os.path.join(BASE_DIR, relative_path))
+    print(abs_path)
+    # Проверяем существование файла
+    if not os.path.exists(abs_path):
+        return f"Файл по адресу <b>{abs_path}</b> не найден", 404
+    
+    try:
+        with open(abs_path, 'r', encoding='utf-8') as file:
+            result_text = file.read(size)
+            result_size = len(result_text)
+            
+        return (
+            f"<b>{abs_path}</b> {result_size}<br>"
+            f"{result_text}"
+        )
+    except Exception as e:
+        return f"Ошибка при чтении файла: {e}", 500
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+@app.route('/')
+def index():
+    # Список всех эндпоинтов
+    links = []
+    for rule in app.url_map.iter_rules():
+        if "static" not in rule.endpoint:
+            url = rule.rule
+            links.append(f'<li><a href="{url}">{url}</a></li>')
+    
+    return f"""
+    <h1>Навигация по модулю 02</h1>
+    <ul>
+        {"".join(links)}
+    </ul>
+    """
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
